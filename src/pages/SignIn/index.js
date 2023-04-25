@@ -9,7 +9,7 @@ import { ThreeDots } from "react-loader-spinner";
 export default function SignIn() {
   const [form, setForm] = useState({ email: "", senha: "" });
   const [isLoading, setIsLoading] = useState(false);
-  const { auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
   function handleInput({ name, value }) {
@@ -22,9 +22,11 @@ export default function SignIn() {
 
     signIn(form)
       .then((res) => {
-        const { token } = res.data;
+        console.log(res.data);
+        const { id, nome, token } = res.data;
         setIsLoading(false);
         setAuth(token);
+        // localStorage.setItem("user", JSON.stringify({ id, nome, token }));
         navigate("/home");
       })
       .catch((err) => {
@@ -41,8 +43,8 @@ export default function SignIn() {
           placeholder="E-mail"
           name="email"
           type="email"
-          value={form.email}
           required
+          value={form.email}
           disabled={isLoading}
           onChange={(e) =>
             handleInput({
@@ -55,8 +57,8 @@ export default function SignIn() {
           placeholder="Senha"
           name="senha"
           type="password"
-          value={form.senha}
           required
+          value={form.senha}
           disabled={isLoading}
           onChange={(e) =>
             handleInput({
