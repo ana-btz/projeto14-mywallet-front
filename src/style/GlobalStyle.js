@@ -7,6 +7,11 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
     }
     button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        
         outline: none;
         border: none;
         border-radius: 5px;

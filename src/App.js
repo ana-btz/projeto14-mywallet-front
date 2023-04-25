@@ -4,8 +4,6 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const type = "entrada";
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -13,7 +11,7 @@ export default function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/cadastro" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
-        <Route path={`/nova-transacao/${type}`} element={<NewTransaction />} />
+        <Route path={"/nova-transacao/:type"} element={<NewTransaction />} />
         {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>
     </BrowserRouter>
