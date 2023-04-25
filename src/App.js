@@ -1,3 +1,15 @@
+import Home from "./pages/Home";
+import NewTransaction from "./pages/NewTransaction";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+
 export default function App() {
-  return <div>Esse é o componente App</div>;
+  return (
+    <>
+      {/* <Home /> */}
+      {/* <NewTransaction /> */}
+      <SignIn />
+      {/* <SignUp /> */}
+    </>
+  );
 }
