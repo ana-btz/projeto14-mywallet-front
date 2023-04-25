@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import Logo from "../../components/Logo";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("/");
+  }
+
   return (
     <Container>
       <Logo />
-      <form>
+      <form onSubmit={handleSubmit}>
         <input placeholder="Nome" />
         <input placeholder="E-mail" />
         <input placeholder="Senha" />
@@ -13,7 +21,7 @@ export default function SignUp() {
         <button>Cadastrar</button>
       </form>
 
-      <a>Já tem uma conta? Entre agora!</a>
+      <Link to="/">Já tem uma conta? Entre agora!</Link>
     </Container>
   );
 }

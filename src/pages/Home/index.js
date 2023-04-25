@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Header,
@@ -31,6 +32,12 @@ export default function Home() {
       type: "entrada",
     },
   ];
+
+  const navigate = useNavigate();
+
+  function newTransaction(type) {
+    navigate(`/nova-transacao/${type}`);
+  }
 
   let total = 0;
   transactions.forEach((t) => {
@@ -68,11 +75,11 @@ export default function Home() {
       </TransactionsTable>
 
       <ButtonsContainer>
-        <button>
+        <button onClick={() => newTransaction("entrada")}>
           <ion-icon name="add-circle-outline"></ion-icon>
           <p>Nova entrada</p>
         </button>
-        <button>
+        <button onClick={() => newTransaction("saida")}>
           <ion-icon name="remove-circle-outline"></ion-icon>
           <p>Nova saída</p>
         </button>

@@ -1,17 +1,25 @@
 import styled from "styled-components";
 import Logo from "../../components/Logo";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("/home");
+  }
+
   return (
     <Container>
       <Logo />
-      <form>
+      <form onSubmit={handleSubmit}>
         <input placeholder="E-mail" />
         <input placeholder="Senha" />
         <button>Entrar</button>
       </form>
 
-      <a>Primeira vez? Cadastre-se!</a>
+      <Link to="/cadastro">Primeira vez? Cadastre-se!</Link>
     </Container>
   );
 }

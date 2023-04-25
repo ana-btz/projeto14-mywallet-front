@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function NewTransaction() {
+  const navigate = useNavigate();
   const type = "entrada"; // o tipo de transação vem do BD
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("/home");
+  }
 
   return (
     <Container>
       <h1>{`Nova ${type}`}</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input placeholder="Valor" type="text" />
         <input placeholder="Descrição" type="text" />
         <button>{`Salvar ${type}`}</button>
